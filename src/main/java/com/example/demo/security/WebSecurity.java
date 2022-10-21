@@ -19,6 +19,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 
 @EnableWebSecurity
+
 @RequiredArgsConstructor
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
@@ -36,7 +37,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/user/**").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/delete/**").authenticated()
                 .antMatchers(HttpMethod.PUT, "/update/**").authenticated()
-
                 .and()
                 .addFilter(new JWTAuthenticationFilter(userService, authenticationManager()))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()))
